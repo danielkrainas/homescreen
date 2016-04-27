@@ -1,0 +1,24 @@
+{
+  "name": "homescreen",
+  "version": "0.0.1",
+  "description": "An application launcher for hometheater PC's",
+  "main": "app.html",
+  "window": {
+    "toolbar": false,
+    "fullscreen": true
+  },
+  "scripts": {
+    "start": "nw .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "htpc",
+    "launcher",
+    "homescreen"
+  ],
+  "author": "Danny Krainas <me@danielkrainas.com>",
+  "license": "Unlicense",
+  "dependencies": {
+    "nw": "^0.14.2"
+  }
+}

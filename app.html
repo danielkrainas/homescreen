@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Homescreen</title>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all" />
+	<style type="text/css">
+		html, body {
+			background-color: #474747;
+			height: 100%;
+		}
+
+		b:before {
+			font-size: 40vh;
+		}
+
+		.screen-item {
+			text-align: center;
+			padding: 5vh 0;
+			margin-top: 5vh;
+			/*height: 90vh;*/
+		}
+
+		.screen-item.active {
+			background-color: #777777;
+			border-radius: 10px;
+			color: #eee;
+		}
+
+		.screen-item p {
+			color: #333333;
+			font-size: 10vh;
+		}
+
+		.screen-item.active p {
+			color: #eee;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="screen-item active">
+					<b class="fa fa-3x fa-tv"></b>
+					<p>TV</p>
+				</div>
+			</div>
+
+			<div class="col-md-4">
+				<div class="screen-item">
+					<b class="fa fa-3x fa-chrome"></b>
+					<p>Web</p>
+				</div>
+			</div>
+
+			<div class="col-md-4">
+				<div class="screen-item">
+					<b class="fa fa-3x fa-steam"></b>
+					<p>Steam</p>
+				</div>
+			</div>			
+		</div>
+	</div>
+</body>
+</html>
