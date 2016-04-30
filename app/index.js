@@ -11,17 +11,20 @@ import './components/launchpad.tag';
 
 store.dispatch(addLauncher({
 	title: 'TV',
-	icon: 'fa-tv'
+	icon: 'fa-tv',
+	cmd: 'echo test-tv'
 }));
 
 store.dispatch(addLauncher({
 	title: 'Web',
-	icon: 'fa-chrome'
+	icon: 'fa-chrome',
+	cmd: 'echo test-web'
 }));
 
 store.dispatch(addLauncher({
 	title: 'Steam',
-	icon: 'fa-steam'
+	icon: 'fa-steam',
+	cmd: 'echo test-steam'
 }));
 
 riot.mixin('redux', reduxMixin(store));

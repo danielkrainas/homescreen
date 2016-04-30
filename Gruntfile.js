@@ -27,7 +27,9 @@ module.exports = function (grunt) {
 						'process.env.NODE_ENV': JSON.stringify('production')
 					}),
 
-					commonjs(),
+					commonjs({
+						ignoreGlobal: true
+					}),
 
 					babel({
 						exclude: './node_modules/**',

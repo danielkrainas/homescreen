@@ -16,3 +16,10 @@ export function setActiveLauncher(launcher) {
 		launcherId: launcher.id
 	};
 }
+
+export function execLauncher(launcher) {
+	return {
+		type: actions.EXEC_LAUNCHER,
+		launcher: launcher
+	};
+}

@@ -19712,6 +19712,7 @@ var uuid = (index$1 && typeof index$1 === 'object' && 'default' in index$1 ? ind
 /* Launcher Actions */
 var ADD_LAUNCHER = 'ADD_LAUNCHER';
 var SET_ACTIVE_LAUNCHER = 'SET_ACTIVE_LAUNCHER';
+var EXEC_LAUNCHER = 'EXEC_LAUNCHER';
 
 function addLauncher(launcher) {
 	return {
@@ -19724,6 +19725,13 @@ function setActiveLauncher(launcher) {
 	return {
 		type: SET_ACTIVE_LAUNCHER,
 		launcherId: launcher.id
+	};
+}
+
+function execLauncher(launcher) {
+	return {
+		type: EXEC_LAUNCHER,
+		launcher: launcher
 	};
 }
 
@@ -20249,7 +20257,31 @@ var initialState = {
 	}
 };
 
-var store = createStore(reducer, initialState, applyMiddleware());
+var createExecutor = function createExecutor(_ref) {
+	var getState = _ref.getState;
+
+	var exec = window.childProcess.exec;
+
+	return function (next) {
+		return function (action) {
+			if (action.type == EXEC_LAUNCHER) {
+				exec(action.launcher.cmd, function (err) {
+					if (err) {
+						alert('error: ' + err);
+					}
+
+					alert('command ran');
+				});
+
+				return;
+			}
+
+			return next(action);
+		};
+	};
+};
+
+var store = createStore(reducer, initialState, applyMiddleware(createExecutor));
 
 riot$1.tag2('launchitem', '<div class="{\'screen-item\': true, active: opts.active}"> <b class="fa fa-3x {opts.icon}"></b> <p>{opts.title}</p> </div>', '', '', function (opts) {});
 
@@ -20279,21 +20311,14 @@ riot$1.tag2('launchpad', '<div class="row"> <div class="col-md-4" each="{launche
 		_this.dispatch(setActiveLauncher(_this.items[pi]));
 	};
 
-	this.handleKey = function (e) {
-		switch (e.which) {
-			case 37:
-				selectPrevious();
-				break;
-
-			case 39:
-				selectNext();
-				break;
-		}
+	var doLaunch = function doLaunch() {
+		_this.dispatch(execLauncher(_this.items[_this.activeIndex]));
 	};
 
 	this.on('mount', function () {
 		_this.bind('left', selectPrevious);
 		_this.bind('right', selectNext);
+		_this.bind(['enter', 'return'], doLaunch);
 	});
 
 	this.subscribe(function (state) {
@@ -20308,17 +20333,20 @@ riot$1.tag2('launchpad', '<div class="row"> <div class="col-md-4" each="{launche
 
 store.dispatch(addLauncher({
 	title: 'TV',
-	icon: 'fa-tv'
+	icon: 'fa-tv',
+	cmd: 'echo test-tv'
 }));
 
 store.dispatch(addLauncher({
 	title: 'Web',
-	icon: 'fa-chrome'
+	icon: 'fa-chrome',
+	cmd: 'echo test-web'
 }));
 
 store.dispatch(addLauncher({
 	title: 'Steam',
-	icon: 'fa-steam'
+	icon: 'fa-steam',
+	cmd: 'echo test-steam'
 }));
 
 riot$1.mixin('redux', reduxMixin(store));

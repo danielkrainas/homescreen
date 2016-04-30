@@ -1,4 +1,4 @@
-import { setActiveLauncher } from '../store/action-creators';
+import { setActiveLauncher, execLauncher } from '../store/action-creators';
 
 <launchpad>
 	<div class="row">
@@ -31,21 +31,14 @@ import { setActiveLauncher } from '../store/action-creators';
 			this.dispatch(setActiveLauncher(this.items[pi]));
 		};
 
-		this.handleKey = e => {
-			switch (e.which) {
-				case 37: //left
-					selectPrevious();
-					break;
-
-				case 39: // right
-					selectNext();
-					break;
-			}
+		const doLaunch = () => {
+			this.dispatch(execLauncher(this.items[this.activeIndex]));
 		};
 
 		this.on('mount', () => {
 			this.bind('left', selectPrevious);
 			this.bind('right', selectNext);
+			this.bind(['enter', 'return'], doLaunch);
 		});
 
 		this.subscribe(state => {
