@@ -9,7 +9,7 @@ import { setActiveLauncher, execLauncher } from '../store/action-creators';
 
 	<script>
 		this.mixin('redux');
-		this.mixin('controls');
+		this.mixin('kb');
 
 		const selectNext = () => {
 			var i = this.activeIndex;
@@ -36,9 +36,9 @@ import { setActiveLauncher, execLauncher } from '../store/action-creators';
 		};
 
 		this.on('mount', () => {
-			this.bind('left', selectPrevious);
-			this.bind('right', selectNext);
-			this.bind(['enter', 'return'], doLaunch);
+			this.bindKb('left', selectPrevious);
+			this.bindKb('right', selectNext);
+			this.bindKb(['enter', 'return'], doLaunch);
 		});
 
 		this.subscribe(state => {

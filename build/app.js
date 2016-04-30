@@ -20267,10 +20267,8 @@ var createExecutor = function createExecutor(_ref) {
 			if (action.type == EXEC_LAUNCHER) {
 				exec(action.launcher.cmd, function (err) {
 					if (err) {
-						alert('error: ' + err);
+						alert('error running launcher: ' + err);
 					}
-
-					alert('command ran');
 				});
 
 				return;
@@ -20289,7 +20287,7 @@ riot$1.tag2('launchpad', '<div class="row"> <div class="col-md-4" each="{launche
 	var _this = this;
 
 	this.mixin('redux');
-	this.mixin('controls');
+	this.mixin('kb');
 
 	var selectNext = function selectNext() {
 		var i = _this.activeIndex;
@@ -20316,9 +20314,9 @@ riot$1.tag2('launchpad', '<div class="row"> <div class="col-md-4" each="{launche
 	};
 
 	this.on('mount', function () {
-		_this.bind('left', selectPrevious);
-		_this.bind('right', selectNext);
-		_this.bind(['enter', 'return'], doLaunch);
+		_this.bindKb('left', selectPrevious);
+		_this.bindKb('right', selectNext);
+		_this.bindKb(['enter', 'return'], doLaunch);
 	});
 
 	this.subscribe(function (state) {
@@ -20350,23 +20348,23 @@ store.dispatch(addLauncher({
 }));
 
 riot$1.mixin('redux', reduxMixin(store));
-riot$1.mixin('controls', {
+riot$1.mixin('kb', {
 	init: function init() {
 		var _this = this;
 
 		this.on('mount', function () {
-			_this.controls = Mousetrap(document);
+			_this.kb = Mousetrap(document);
 		});
 
 		this.on('unmount', function () {
-			_this.controls.reset();
-			_this.controls = null;
+			_this.kb.reset();
+			_this.kb = null;
 		});
 	},
 
-	bind: function bind() {
-		if (this.controls) {
-			this.controls.bind.apply(this.controls, arguments);
+	bindKb: function bindKb() {
+		if (this.kb) {
+			this.kb.bind.apply(this.kb, arguments);
 		}
 	}
 });

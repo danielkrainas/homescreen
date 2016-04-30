@@ -28,21 +28,21 @@ store.dispatch(addLauncher({
 }));
 
 riot.mixin('redux', reduxMixin(store));
-riot.mixin('controls', {
+riot.mixin('kb', {
 	init: function () {
 		this.on('mount', () => {
-			this.controls = Mousetrap(document);
+			this.kb = Mousetrap(document);
 		});
 
 		this.on('unmount', () => {
-			this.controls.reset();
-			this.controls = null;
+			this.kb.reset();
+			this.kb = null;
 		});
 	},
 
-	bind: function () {
-		if (this.controls) {
-			this.controls.bind.apply(this.controls, arguments);
+	bindKb: function () {
+		if (this.kb) {
+			this.kb.bind.apply(this.kb, arguments);
 		}
 	}
 });
