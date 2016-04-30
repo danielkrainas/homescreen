@@ -4,25 +4,13 @@
 	<title>Homescreen</title>
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all" />
-	<link href="/build/styles/app.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="build/styles/app.css" rel="stylesheet" type="text/css" media="all" />
 </head>
 <body>
 	<div class="container">
-		<div class="row">
-			<div class="col-md-4">
-				<launchitem title="TV" icon="fa-tv"></launchitem>
-			</div>
-
-			<div class="col-md-4">
-				<launchitem title="Web" icon="fa-chrome" active="true"></launchitem>
-			</div>
-
-			<div class="col-md-4">
-				<launchitem title="Steam" icon="fa-steam"></launchitem>
-			</div>
-		</div>
+		<launchpad group="launchpad"></launchpad>
 	</div>
 
-	<script src="/build/app.js"></script>
+	<script src="build/app.js"></script>
 </body>
 </html>

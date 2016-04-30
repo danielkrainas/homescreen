@@ -4,7 +4,7 @@ html, body {
 }
 
 b:before {
-	font-size: 40vh;
+	font-size: 4em;
 }
 
 .screen-item {

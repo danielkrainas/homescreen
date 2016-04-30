@@ -20,10 +20,13 @@
   "license": "Unlicense",
   "dependencies": {
     "lodash": "^4.11.1",
+    "mousetrap": "^1.5.3",
+    "node-uuid": "^1.4.7",
     "nw": "^0.14.2",
     "redux": "^3.5.2",
     "riot": "^2.3.18",
-    "riot-redux-mixin": "^1.0.0"
+    "riot-redux-mixin": "^1.0.0",
+    "uuid-v4": "^0.1.0"
   },
   "devDependencies": {
     "babel-plugin-external-helpers": "^6.5.0",
