@@ -3,12 +3,14 @@
   "version": "0.0.1",
   "description": "An application launcher for hometheater PC's",
   "main": "app.html",
+  "preferGlobal": true,
   "window": {
     "toolbar": false,
     "fullscreen": true
   },
   "scripts": {
     "start": "nw .",
+    "build": "grunt build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
