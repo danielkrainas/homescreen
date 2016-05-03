@@ -38,7 +38,7 @@ import { setActiveLauncher, execLauncher } from '../store/action-creators';
 		this.on('mount', () => {
 			this.bindKb('left', selectPrevious);
 			this.bindKb('right', selectNext);
-			this.bindKb(['enter', 'return'], doLaunch);
+			this.bindKb('enter', doLaunch);
 		});
 
 		this.subscribe(state => {

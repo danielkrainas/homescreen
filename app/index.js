@@ -3,29 +3,31 @@ import Mousetrap from 'mousetrap';
 import reduxMixin from 'riot-redux-mixin';
 
 import { addLauncher } from './store/action-creators';
+import { loadConfig } from './config';
 import store from './store';
 
 /* Components */
 import './components/launch-item.tag';
 import './components/launchpad.tag';
 
-store.dispatch(addLauncher({
-	title: 'TV',
-	icon: 'fa-tv',
-	cmd: 'echo test-tv'
-}));
+const path = nwbridge.require('path');
 
-store.dispatch(addLauncher({
-	title: 'Web',
-	icon: 'fa-chrome',
-	cmd: 'echo test-web'
-}));
+var config = null;
 
-store.dispatch(addLauncher({
-	title: 'Steam',
-	icon: 'fa-steam',
-	cmd: 'echo test-steam'
-}));
+const HOME_CONFIG = path.join(process.env[process.platform === 'win32' ? 'USERPROFILE' : 'HOME'], './.homescreen.json');
+
+loadConfig(process.argv[1] || process.env.HOMESCREEN_CONFIG || HOME_CONFIG, function (err, newConfig) {
+	if (err) {
+		return alert('error loading config: ' + err);
+	}
+
+	config = newConfig;
+	if (config && config.launchers) {
+		config.launchers.forEach(function (l) {
+			store.dispatch(addLauncher(l));
+		});
+	}
+});
 
 riot.mixin('redux', reduxMixin(store));
 riot.mixin('kb', {

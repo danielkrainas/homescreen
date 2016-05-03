@@ -28,11 +28,15 @@ module.exports = function (grunt) {
 					}),
 
 					commonjs({
-						ignoreGlobal: true
+						ignoreGlobal: true,
+						exclude: [
+							'node_modules/rollup-plugin-node-globals/**',
+							'node_modules/lodash-es/**'
+						]
 					}),
 
 					babel({
-						exclude: './node_modules/**',
+						exclude: ['./node_modules/**'],
 						presets: ['es2015-rollup']
 					})
 				]

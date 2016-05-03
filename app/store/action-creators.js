@@ -1,7 +1,7 @@
-import _ from 'lodash';
-import uuid from 'uuid-v4';
-
 import * as actions from './actions';
+
+const _ = nwbridge.require('lodash');
+const uuid = nwbridge.require('uuid-v4');
 
 export function addLauncher(launcher) {
 	return {

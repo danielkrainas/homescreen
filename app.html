@@ -12,7 +12,9 @@
 	</div>
 
 	<script type="text/javascript">
-		window.childProcess = require('child_process');
+		window.nwbridge = {
+			require: require
+		};
 	</script>
 	<script src="build/app.js"></script>
 </body>

@@ -1,6 +1,6 @@
-import _ from 'lodash';
-
 import * as actions from './actions';
+
+const _ = nwbridge.require('lodash');
 
 function launcherReducer(state, action) {
 	if (action.type === actions.ADD_LAUNCHER) {
