@@ -33,7 +33,7 @@ The configuration file tells homescreen which launchers to display. A configurat
 }
 ```
 
-### Usage Example
+### Usage
 
 Implicitly using the `.homescreen.json` file in your home directory:
 
