@@ -2,11 +2,13 @@
 
 Homescreen is an application launcher intended for use in HTPC situation. 
 
+
 ## Installation
 
 Install with `npm`:
 
 > $ npm install -g homescreen
+
 
 ## Usage
 
@@ -14,9 +16,11 @@ Run with the `homescreen` command:
 
 > $ homescreen
 
+
 ## Configuration
 
 The configuration file tells homescreen which launchers to display. A configuration file can either be specified as a parameter at runtime, specified in the `HOMESCREEN_CONFIG` environment variable, or by putting a `.homescreen.json` file in the user's home directory. 
+
 
 ### Example
 
@@ -33,6 +37,7 @@ The configuration file tells homescreen which launchers to display. A configurat
 }
 ```
 
+
 ### Usage
 
 Implicitly using the `.homescreen.json` file in your home directory:
@@ -46,6 +51,17 @@ As an argument:
 As an environment variable:
 
 > $ HOMESCREEN_CONFIG=path/to/config/file.json homescreen
+
+
+## Contributions
+
+Contributions are welcome! Fork and send a PR and I'll see about merging.
+
+
+## Bugs and Feedback
+
+If you see a bug or have a suggestion, feel free to create an issue [here](https://github.com/danielkrainas/homescreen/issues).
+
 
 ## License
 
