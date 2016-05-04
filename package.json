@@ -4,12 +4,17 @@
   "description": "An application launcher for hometheater PC's",
   "main": "app.html",
   "preferGlobal": true,
+  "private": false,
   "bin": {
     "homescreen": "bin/homescreen.js"
   },
   "window": {
     "toolbar": false,
     "fullscreen": true
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/danielkrainas/homescreen"
   },
   "scripts": {
     "start": "nw .",
@@ -19,7 +24,8 @@
   "keywords": [
     "htpc",
     "launcher",
-    "homescreen"
+    "homescreen",
+    "desktop"
   ],
   "author": "Danny Krainas <me@danielkrainas.com>",
   "license": "Unlicense",
