@@ -1,14 +1,26 @@
 package server
 
 import (
+	"bytes"
 	"fmt"
 	"net/http"
 	"os"
+	"path"
+
+	"github.com/danielkrainas/homescreen/content"
 )
+
+func serveContent(w http.ResponseWriter, r *http.Request) bool {
+	if blob, ok := content.Get(r.URL.Path); ok {
+
+	}
+
+	return false
+}
 
 func Load() {
 	http.HandleFunc("/", http.HandlerFunc(defaultHandler))
-	http.HandleFunc("/", http.FileServer(http.Dir()))
+	http.HandleFunc("/index.html")
 	fmt.Println("Homescreen listening at http://localhost:8533")
 	http.ListenAndServe(":8533", nil)
 }

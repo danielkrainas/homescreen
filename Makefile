@@ -1,14 +1,23 @@
 
+all: clean build
 
-build:
+build-client:
 	grunt build
-	go clean github.com/danielkrainas/homescreen
-	#if [ ! -f $GOPATH/bin/go-bindata ]; then
-	#	echo "go-bindata not found. installing...."
-	#	go get github.com/jteeuwen/go-bindata/go-bindata
-	#fi
 
-	echo "generating templates..."
-	rm -rf content
-	go-bindata -o content/content.go -ignore=".*\.go" -pkg="content" client/
+build-server:
 	go build github.com/danielkrainas/homescreen
+
+convert-content:
+	echo "generating templates..."
+	rm content/content.go
+	go-bindata -o content/content.go -ignore=".*\.go" -pkg="content" client/
+
+clean-server:
+	go clean github.com/danielkrainas/homescreen
+
+clean-client:
+	rm -rf .tmp
+
+clean: clean-client clean-server
+
+build: build-client convert-content build-server
