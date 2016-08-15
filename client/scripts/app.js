@@ -1,7 +1,8 @@
 import riot from 'riot';
 import reduxMixin from 'riot-redux-mixin';
 
-// component imports
+import "./components/launchitem.tag";
+import "./components/launchpad.tag";
 
 import storeFactory from './store';
 import * as wares from './store/middleware';
